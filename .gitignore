@@ -1,0 +1,8 @@
+.idea
+*.exe
+
+go.sum
+
+*.env
+
+/storage/storage.db
