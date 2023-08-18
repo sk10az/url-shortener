@@ -8,8 +8,8 @@ import (
 )
 
 type Config struct {
-	Env         string `yaml:"env" env-Default:"local" env-required:"true"` // TODO: можно удалить зависимость
-	StoragePath string `yaml:"storage_path" env_required:"true"`
+	Env         string `yaml:"env" env-default:"local"` // TODO: можно удалить зависимость
+	StoragePath string `yaml:"storage_path" env-required:"true"`
 	HTTPServer  `yaml:"http_server"`
 }
 
@@ -20,6 +20,7 @@ type HTTPServer struct {
 }
 
 func MustLoad() *Config {
+	//os.Setenv("CONFIG_PATH", "config/local.yml")
 	configPath := os.Getenv("CONFIG_PATH")
 	if configPath == "" {
 		log.Fatal("CONFIG_PATH is not set")
